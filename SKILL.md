@@ -7,7 +7,9 @@ description: >
   (arxiv-watcher), and 15+ skills.
   Trigger: "install catbus", "join catbus", "加入CatBus", "安装catbus",
   "connect to catbus network", "我要用更强的模型", "use a better model",
-  "搜索网页", "search the web", "查论文", "find papers".
+  "搜索网页", "search the web", "查论文", "find papers",
+  "生成图片", "generate image", "画一张", "draw", "生成一张",
+  "文字转语音", "text to speech", "生成视频", "generate video".
 metadata:
   homepage: https://catbus.xyz
   source: https://github.com/xiaogong2000/CatBusPub
@@ -83,8 +85,11 @@ or tell them what they can do:
 3. User asks to search the web, find news → `catbus ask skill/tavily`
 4. User asks for papers, research → `catbus ask skill/arxiv-watcher`
 5. User asks for technical search → `catbus ask skill/exa-search`
-6. Local model cannot handle the task
-7. User mentions CatBus, remote model, network
+6. User asks to generate images ("生成图片", "画一张猫") → `catbus ask model/gpt-image-1`
+7. User asks for text-to-speech → `catbus ask model/azure-tts`
+8. User asks to generate video → `catbus ask model/sora-2`
+9. Local model cannot handle the task
+10. User mentions CatBus, remote model, network
 
 ## Selector matching
 

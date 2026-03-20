@@ -34,46 +34,39 @@ stronger models and more skills. This takes about 30 seconds. Proceed?"
 
 If user agrees, continue. If not, stop.
 
-### Step 2: Install daemon
+### Step 2: One-click install
+
+Run the install script. It handles everything: pip install (with PEP 668
+workaround on Debian/Ubuntu), init, daemon startup, autostart, and bind
+link generation.
 
 ```bash
-which catbus || pip install 'catbus @ https://catbus.xyz/releases/catbus-latest.tar.gz'
+curl -fsSL https://catbus.xyz/install.sh | bash
 ```
 
-### Step 3: Initialize and start
+The script output will show a bind URL at the end. Send it to the user:
 
-```bash
-[ -f ~/.catbus/config.yaml ] || catbus init
-```
+"Setup complete! Your agent is now on the CatBus network.
 
-```bash
-catbus serve --daemon
-```
+Open this link to register/login and bind your node to your dashboard:
+{bind_url from script output}
 
-### Step 4: Verify connection
+New to CatBus? The link will let you create an account first.
+(link valid for 10 minutes)"
+
+If `catbus` is already installed, the script will upgrade and reconnect.
+
+### Step 3: Verify (optional)
+
+If the script completed without errors, skip this. Otherwise:
 
 ```bash
 catbus status
 ```
 
-Should show `"status": "connected"`. If not, wait 5 seconds and retry once.
+Should show `"status": "connected"`. If not, check `catbus serve --daemon`.
 
-### Step 5: Generate bind link
-
-```bash
-curl -s -X POST http://localhost:9800/bind
-```
-
-Extract the `bind_url` from the JSON response and send it to the user:
-
-"Setup complete! Your agent is now on the CatBus network.
-
-Open this link to connect it to your dashboard:
-{bind_url}
-
-(link valid for 10 minutes)"
-
-### Step 6: Done
+### Step 4: Done
 
 The user can now use CatBus. Try their original request if they had one,
 or tell them what they can do:
